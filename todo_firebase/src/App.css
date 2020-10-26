@@ -1,0 +1,41 @@
+.App{
+  background-color: rgb(163, 203, 241);
+  height: 48rem;
+}
+
+h4{
+  padding-top: 4rem;
+  font-size: 2.8rem;
+}
+
+form{
+  padding: 0 1rem 2rem 1rem;
+  margin-top: 5rem !important;
+}
+
+.project_list{
+  margin-top: 2rem;
+  height: 40rem;
+  overflow: auto;
+  cursor: pointer;
+}
+
+.notice{
+  margin-top: 2.5rem;
+  padding: 1rem 1rem;
+  overflow: auto;
+  height: 18rem;
+}
+
+.notice_padding{
+  padding: .5rem 0;
+}
+
+.detail{
+  margin-top: 4rem;
+}
+
+.detail_padding{
+  padding: 1rem 2rem;
+}
+
