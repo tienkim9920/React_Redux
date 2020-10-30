@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { signUp } from '../redux/action/authAction'
 
 class SignUp extends Component {
 
     state = {
-        fullname: "",
+        id: "",
+        fullName: "",
         email: "",
         password: "",
-        test: ""
+        isChecked: false
     }
 
     HandlerChange = (e) => {
@@ -17,7 +20,27 @@ class SignUp extends Component {
 
     HandlerSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state)
+
+        this.setState({
+            isChecked: true
+        })
+
+        const dataStore = {
+            id: Math.random().toString(),
+            fullName: this.state.fullName,
+            email: this.state.email,
+            password: this.state.password
+        }
+
+        console.log(dataStore)
+
+        this.props.signUp(dataStore)
+
+        this.setState({
+            fullName: "",
+            email: "",
+            password: ""
+        })
     }
 
     render() {
@@ -28,7 +51,7 @@ class SignUp extends Component {
                     <div className="row">
                         <div className="col s12 m4 l2"></div>
                         <div className="input-field col s12 m4 l8">
-                            <input id="fullname" type="text" className="validate" onChange={this.HandlerChange} />
+                            <input id="fullName" type="text" value={this.state.fullName} className="validate" onChange={this.HandlerChange} />
                             <label htmlFor="fullname">Full Name</label>
                         </div>
                         <div className="col s12 m4 l2"></div>
@@ -36,7 +59,7 @@ class SignUp extends Component {
                     <div className="row">
                         <div className="col s12 m4 l2"></div>
                         <div className="input-field col s12 m4 l8">
-                            <input id="email" type="email" className="validate" onChange={this.HandlerChange} />
+                            <input id="email" type="email" value={this.state.email} className="validate" onChange={this.HandlerChange} />
                             <label htmlFor="email">Email</label>
                         </div>
                         <div className="col s12 m4 l2"></div>
@@ -44,15 +67,18 @@ class SignUp extends Component {
                     <div className="row">
                         <div className="col s12 m4 l2"></div>
                         <div className="input-field col s12 m4 l8">
-                            <input id="password" type="password" className="validate" onChange={this.HandlerChange} />
+                            <input id="password" type="password" value={this.state.password} className="validate" onChange={this.HandlerChange} />
                             <label htmlFor="password">Password</label>
                         </div>
                         <div className="col s12 m4 l2"></div>
                     </div>
+                    { this.state.isChecked && 
+                        <p className="green-text accent-3 center">Sign Up Success!</p>
+                    }
                     <div className="row">
                         <div className="col s12 m4 l2"></div>
                         <div className="input-field col s12 m4 l8">
-                            <button className="btn btn-raised">Sign Up</button>
+                            <button className="btn btn-raised" type="submit">Sign Up</button>
                         </div>
                         <div className="col s12 m4 l2"></div>
                     </div>
@@ -60,7 +86,16 @@ class SignUp extends Component {
             </div>
         );
     }
+}
+
+const mapDispatchToProps = (dispatch) => {
+
+    return {
+        signUp: (data) => {
+            dispatch(signUp(data))
+        }
+    }
 
 }
 
-export default SignUp
+export default connect(null, mapDispatchToProps)(SignUp)

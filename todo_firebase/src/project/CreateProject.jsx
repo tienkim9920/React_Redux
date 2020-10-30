@@ -21,6 +21,7 @@ class CreateProject extends Component {
 
     HandlerSubmit = (e) => {
         e.preventDefault();
+
         
         const time = new Date()
 
@@ -32,19 +33,20 @@ class CreateProject extends Component {
 
         var strTimeAt = getDate + "-" + getMonth + "-" + getYear
 
-        var idRandom = Math.random().toString()
+        const dataStore = {
+            id: Math.random().toString(),
+            title: this.state.title,
+            content: this.state.email,
+            password: this.state.password,
+            timeAt: strTimeAt
+        }
 
-        this.setState({
-            id: idRandom,
-            timeAt: strTimeAt,
-            isChecked: true
-        })
-
-        this.props.createProject(this.state)
+        this.props.createProject(dataStore)
 
         this.setState({
             title: "",
-            content: ""
+            content: "",
+            isChecked: true
         })
     }
 
@@ -96,5 +98,5 @@ const mapDispatchtToProps = (dispatch) => {
     }
 }
 
-export default connect(null ,mapDispatchtToProps)(CreateProject)
+export default connect(null, mapDispatchtToProps)(CreateProject)
 

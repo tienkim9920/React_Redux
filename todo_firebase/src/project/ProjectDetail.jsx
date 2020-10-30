@@ -33,12 +33,6 @@ class ProjectDetail extends Component {
 
         return (
             <div className="container detail">
-                {/* <div className="card detail_padding">
-                    <button className="btn btn-raised right red lighten-1" onClick={this.deleteDetail}>X</button>
-                    <h1 className="card-content center">{detail.title}</h1>
-                    <h1 className="card-title center">{detail.content}</h1>
-                    <h1 className="card-title center grey-text">{detail.timeAt}</h1>
-                </div> */}
                 { alert }
             </div>
         )

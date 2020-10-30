@@ -10,8 +10,8 @@ const initState = {
 
 const projectReducer = (state = initState, action) => {
     if (action.type === 'CREATE_PROJECT'){
+
         state.projects.push(action.project)
-        console.log(state.projects)
     }
     if (action.type === 'DELETE_DETAIL'){
         var projects = state.projects.filter(e => {

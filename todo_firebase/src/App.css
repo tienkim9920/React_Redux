@@ -1,6 +1,6 @@
 .App{
   background-color: rgb(163, 203, 241);
-  height: 48rem;
+  height: 50rem;
 }
 
 h4{
@@ -39,3 +39,16 @@ form{
   padding: 1rem 2rem;
 }
 
+a{
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .brand-logo{
+    left: 20% !important;
+  }
+
+  .App{
+    height: 70rem;
+  }
+}
